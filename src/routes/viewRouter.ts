@@ -5,7 +5,7 @@ const viewRouter = Router();
 
 viewRouter.get("/", viewController.all);
 viewRouter.get("/inactive", viewController.inactive);
-viewRouter.get("/inProgress", viewController.inProduction);
+viewRouter.get("/inprogress", viewController.inProduction);
 viewRouter.get("/done", viewController.completed);
 viewRouter.get("/:id", viewController.findById);
 
