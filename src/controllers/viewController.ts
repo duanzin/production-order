@@ -39,7 +39,9 @@ async function completed(req: Request, res: Response, next: NextFunction) {
 async function findById(req: Request, res: Response, next: NextFunction) {
   const id: number = parseInt(req.params.id);
   try {
+    if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
     const order: OrderParams = await getById(id);
+    if(!order) res.sendStatus(404);
     res.status(200).send(order);
   } catch (err) {
     res.status(500).send(err.message);

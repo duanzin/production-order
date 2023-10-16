@@ -35,7 +35,6 @@ Production orders look like this:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "inactive"
 },
 ```
@@ -46,6 +45,7 @@ Below are the api paths and their uses.
 
 These calls create or update the production orders.
 To use them, add /order to the server link plus one of the paths below.
+Updating a non existant order does nothing.
 
 ```
 Example:
@@ -66,7 +66,6 @@ Requires a body with the following structure:
   "product":"product name",
   "quantity": 9,
   "deliveryDate": "2023-12-17",
-  "resources": 4
 }
 
 ```
@@ -100,6 +99,7 @@ Changes a product order status to "completed".
 
 These calls list orders based on their status or id.
 To use them, add /view to the server link plus one of the paths below.
+They all return empty arrays if nothing is found.
 
 ```
 Example:
@@ -122,7 +122,6 @@ Returns an array like the one below:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "inactive"
     },
     {
@@ -130,7 +129,6 @@ Returns an array like the one below:
     "product":"another product",
     "quantity": 1,
     "deliveryDate": "2023-12-20",
-    "resources": 7,
     "status": "completed"
     },
     {
@@ -138,7 +136,6 @@ Returns an array like the one below:
     "product":"yet another product",
     "quantity": 12,
     "deliveryDate": "2023-11-20",
-    "resources": 20,
     "status": "in production"
     }
 ]
@@ -160,7 +157,6 @@ Returns an array like the one below:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "inactive"
     },
     {
@@ -168,7 +164,6 @@ Returns an array like the one below:
     "product":"another product",
     "quantity": 1,
     "deliveryDate": "2023-12-20",
-    "resources": 7,
     "status": "inactive"
     },
     {
@@ -176,7 +171,6 @@ Returns an array like the one below:
     "product":"yet another product",
     "quantity": 12,
     "deliveryDate": "2023-11-20",
-    "resources": 20,
     "status": "inactive"
     }
 ]
@@ -198,7 +192,6 @@ Returns an array like the one below:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "in production"
     },
     {
@@ -206,7 +199,6 @@ Returns an array like the one below:
     "product":"another product",
     "quantity": 1,
     "deliveryDate": "2023-12-20",
-    "resources": 7,
     "status": "in production"
     },
     {
@@ -214,7 +206,6 @@ Returns an array like the one below:
     "product":"yet another product",
     "quantity": 12,
     "deliveryDate": "2023-11-20",
-    "resources": 20,
     "status": "in production"
     }
 ]
@@ -236,7 +227,6 @@ Returns an array like the one below:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "completed"
     },
     {
@@ -244,7 +234,6 @@ Returns an array like the one below:
     "product":"another product",
     "quantity": 1,
     "deliveryDate": "2023-12-20",
-    "resources": 7,
     "status": "completed"
     },
     {
@@ -252,7 +241,6 @@ Returns an array like the one below:
     "product":"yet another product",
     "quantity": 12,
     "deliveryDate": "2023-11-20",
-    "resources": 20,
     "status": "completed"
     }
 ]
@@ -273,7 +261,6 @@ Returns an object like the one below:
     "product":"product name",
     "quantity": 9,
     "deliveryDate": "2023-12-17",
-    "resources": 4,
     "status": "inactive"
 }
 ```

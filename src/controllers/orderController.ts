@@ -15,6 +15,7 @@ async function create(req: Request, res: Response, next: NextFunction) {
 async function start(req: Request, res: Response, next: NextFunction) {
   const id: number = parseInt(req.params.id);
   try {
+    if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
     await updateStatus(id, "in production");
     res.sendStatus(200);
   } catch (err) {
@@ -24,6 +25,7 @@ async function start(req: Request, res: Response, next: NextFunction) {
 async function pause(req: Request, res: Response, next: NextFunction) {
   const id: number = parseInt(req.params.id);
   try {
+    if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
     await updateStatus(id, "inactive");
     res.sendStatus(200);
   } catch (err) {
@@ -33,6 +35,7 @@ async function pause(req: Request, res: Response, next: NextFunction) {
 async function finish(req: Request, res: Response, next: NextFunction) {
   const id: number = parseInt(req.params.id);
   try {
+    if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
     await updateStatus(id, "completed");
     res.sendStatus(200);
   } catch (err) {

@@ -4,12 +4,11 @@ import { CreateOrderParams, OrderParams } from "../protocols/orderProtocol.js";
 export async function createOrder(order: CreateOrderParams) {
   openDb().then((db) => {
     db.run(
-      `INSERT INTO productionOrder (product, quantity, deliveryDate, resources, status) VALUES (?,?,?,?,?)`,
+      `INSERT INTO productionOrder (product, quantity, deliveryDate, status) VALUES (?,?,?,?)`,
       [
         order.product,
         order.quantity,
         order.deliveryDate,
-        order.resources,
         "inactive",
       ]
     );

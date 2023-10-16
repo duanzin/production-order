@@ -3,7 +3,6 @@ export type OrderParams = {
     product: string;
     quantity: number;
     deliveryDate: string;
-    resources: number;
     status: "inactive" | "in production" | "completed";
   };
   
