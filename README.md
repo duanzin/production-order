@@ -69,6 +69,16 @@ Requires a body with the following structure:
 }
 
 ```
+
+Using curl:
+```
+curl -X POST -d '{
+  "product": "product name",
+  "quantity": 9,
+  "deliveryDate": "2023-12-17"
+}' -H "Content-Type: application/json" http://localhost:{port}/order/
+
+```
 Ids are assigned automatically and status is set to inactive by default.
 
 ### Start production
@@ -79,6 +89,11 @@ PATCH /start/{orderId}
 
 Changes a product order status to "in production".
 
+Using curl:
+```
+curl -X PATCH http://localhost:{port}/order/start/{orderId}
+```
+
 ### Pause production
 
 ```
@@ -87,6 +102,11 @@ PATCH /pause/{orderId}
 
 Changes a product order status to "inactive".
 
+Using curl:
+```
+curl -X PATCH http://localhost:{port}/order/pause/{orderId}
+```
+
 ### Finish production
 
 ```
@@ -94,6 +114,11 @@ PATCH /end/{orderId}
 ```
 
 Changes a product order status to "completed".
+
+Using curl:
+```
+curl -X PATCH http://localhost:{port}/order/end/{orderId}
+```
 
 ## View Routes
 
@@ -141,6 +166,11 @@ Returns an array like the one below:
 ]
 ```
 
+Using curl:
+```
+curl http://localhost:{port}/view/
+```
+
 ### List all inactive orders
 
 ```
@@ -174,6 +204,11 @@ Returns an array like the one below:
     "status": "inactive"
     }
 ]
+```
+
+Using curl:
+```
+curl http://localhost:{port}/view/inactive
 ```
 
 ### List all orders currently in production
@@ -211,6 +246,11 @@ Returns an array like the one below:
 ]
 ```
 
+Using curl:
+```
+curl http://localhost:{port}/view/inprogress
+```
+
 ### List all completed orders
 
 ```
@@ -246,6 +286,11 @@ Returns an array like the one below:
 ]
 ```
 
+Using curl:
+```
+curl http://localhost:{port}/view/done
+```
+
 ### Show a specific order
 
 ```
@@ -263,4 +308,9 @@ Returns an object like the one below:
     "deliveryDate": "2023-12-17",
     "status": "inactive"
 }
+```
+
+Using curl:
+```
+curl http://localhost:{port}/view/{orderId}
 ```
